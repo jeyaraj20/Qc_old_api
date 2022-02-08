@@ -1,0 +1,27 @@
+{
+  "development": {
+    "username": "admin_qcloud",
+    "password": "YKEfMCk9UeJ6",
+    "database": "admin_qcloud",
+    "host": "localhost",
+    "dialect": "mysql",
+    "dialectOptions": {
+      "useUTC": false
+    },
+    "timezone": "+05:30"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

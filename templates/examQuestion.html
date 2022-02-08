@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <title>Automated mail reporter</title>
+</head>
+
+<body style="padding:0 10px;">
+    <div style="text-align: center;">
+        <h1>{{headerName}}</h1>
+        <h3>{{masterCatName}}</h3>
+        <h3>{{mainCatName}}</h3>
+        <h3>{{subCatName}}</h3>
+        <P>{{examName}} - Exam Questions</P>
+    </div>
+    <div>
+        <h6 id='rowCount' style="display: none;">{{rowCount}}</h6>
+        {{#each data}}
+        <div>
+            <h6 id='hiddenid{{this.index}}' style="display: none;">
+                {{this.question}}
+            </h6>
+            <div>
+                <h4 style="float: left; width: 7%;">Q.{{this.rowNo}}</h4>
+                <h4 id='id{{this.index}}' style="float: right; width: 93%;"></h4>
+            </div>
+            <div style="margin-left: 30px;">
+                <ul>
+                    {{#if this.opt_1 }}
+                    <li id="optHide01{{this.index}}" style="display: none;">{{this.opt_1}}</li>
+                    <li id="optShow01{{this.index}}" style="margin-bottom: 10px;"></li>
+                    {{/if}}
+                    {{#if this.opt_2 }}
+                    <li id="optHide02{{this.index}}" style="display: none;">{{this.opt_2}}</li>
+                    <li id="optShow02{{this.index}}" style="margin-bottom: 10px;"></li>
+                    {{/if}}
+                    {{#if this.opt_3 }}
+                    <li id="optHide03{{this.index}}" style="display: none;">{{this.opt_3}}</li>
+                    <li id="optShow03{{this.index}}" style="margin-bottom: 10px;"></li>
+                    {{/if}}
+                    {{#if this.opt_4 }}
+                    <li id="optHide04{{this.index}}" style="display: none;">{{this.opt_4}}</li>
+                    <li id="optShow04{{this.index}}" style="margin-bottom: 10px;"></li>
+                    {{/if}}
+                    {{#if this.opt_5 }}
+                    <li id="optHide05{{this.index}}" style="display: none;">{{this.opt_5}}</li>
+                    <li id="optShow05{{this.index}}" style="margin-bottom: 10px;"></li>
+                    {{/if}}
+                </ul>
+            </div>
+            {{#if this.crt_ans_text }}
+                <div style="margin-left: 60px;">
+                    <p id="hideCrtAns{{this.index}}" style="display: none;">{{this.crt_ans_text}}</p>
+                    <p style="margin-bottom: 10px;">
+                        Correct Answer : <span id="showCrtAns{{this.index}}"></span>
+                    </p>
+                </div>
+            {{/if}}
+        </div>
+        {{/each}}
+    </div>
+    <script>
+        var dataCount = $('#rowCount').text();
+        dataCount = Number(dataCount);
+        for (var i = 0; i <= dataCount; i++) {
+            var rowsData = $('#hiddenid' + i).text();
+            var opt01Data = $('#optHide01' + i).text();
+            var opt02Data = $('#optHide02' + i).text();
+            var opt03Data = $('#optHide03' + i).text();
+            var opt04Data = $('#optHide04' + i).text();
+            var opt05Data = $('#optHide05' + i).text();
+            var crtAnsData = $('#hideCrtAns' + i).text();
+            $("#id" + i).html(rowsData);
+            $("#optShow01" + i).html(opt01Data);
+            $("#optShow02" + i).html(opt02Data);
+            $("#optShow03" + i).html(opt03Data);
+            $("#optShow04" + i).html(opt04Data);
+            $("#optShow05" + i).html(opt05Data);
+            $("#showCrtAns" + i).html(crtAnsData);
+        }
+    </script>
+</body>
+
+</html>
